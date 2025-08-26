@@ -1,12 +1,13 @@
 networks:
-  default:
-    external:
-      name: proxy
+  proxy:
+    external: true
 
 services:
   app:
     image: 'jc21/nginx-proxy-manager:2.12.6'
     restart: unless-stopped
+    networks:
+      - proxy
     ports:
       - '80:80'
       - '81:81'
